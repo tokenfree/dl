@@ -142,7 +142,7 @@ body {
 }
 
 .part-of-speech {
-    color: var(--primary-color);
+    color: #666;
     font-weight: 600;
     margin-top: 1rem;
     font-size: 0.9rem;
@@ -233,6 +233,15 @@ body {
     opacity: 0.8;
 }
 
-.clickable-active .part-of-speech {
-    color: black;
+/* Fix for part-of-speech and other titles to retain their color */
+.part-of-speech {
+    color: var(--text-color) !important;  /* Changed from #666 to black */
+}
+
+.card-title {
+    color: var(--text-color) !important;
+}
+
+.word {
+    color: var(--text-color) !important;
 }
