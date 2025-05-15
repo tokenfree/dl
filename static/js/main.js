@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             // Show "no definition" message when the word is not found in dictionary
             definitionContent.innerHTML = `
-                <div class="alert alert-warning" style="background-color: white;">
+                <div style="padding: 10px; background-color: white; border: none;">
                     No definition found for this word
                 </div>
             `;
