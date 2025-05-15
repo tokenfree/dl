@@ -53,7 +53,7 @@ def get_word_info(word):
 
         result = {
             "definition": dict_data[0] if dict_data else None,
-            "images": [img["urls"]["regular"] for img in image_data["results"][:10]] if image_data and "results" in image_data else []  # Ensure we only use first 10 images
+            "images": [img["urls"]["regular"] for img in image_data["results"][:10]] if image_data and "results" in image_data and image_data["results"] else []  # Ensure we only use first 10 images
         }
 
         # Cache the result
