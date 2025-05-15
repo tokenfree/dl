@@ -111,6 +111,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${img}" alt="${word}" class="d-block w-100">
                 </div>
             `).join('');
+        } else {
+            // Show "no images" message when no images are found
+            carouselInner.innerHTML = `
+                <div class="carousel-item active">
+                    <div class="d-flex align-items-center justify-content-center" style="height: 300px; background: rgba(118, 118, 128, 0.08);">
+                        <p class="text-muted">There is no related images for this word</p>
+                    </div>
+                </div>
+            `;
         }
     }
 
@@ -152,7 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
     clickableToggle.addEventListener('click', function() {
         isClickableMode = !isClickableMode;
         this.classList.toggle('active');
-        document.documentElement.classList.toggle('clickable-active', isClickableMode);
         if (searchInput.value.trim()) {
             fetchWordInfo(searchInput.value.trim(), false);
         }
