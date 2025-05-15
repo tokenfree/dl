@@ -142,7 +142,7 @@ body {
 }
 
 .part-of-speech {
-    color: #666;
+    
     font-weight: 600;
     margin-top: 1rem;
     font-size: 0.9rem;
@@ -157,7 +157,7 @@ body {
 }
 
 .example {
-    color: #666;
+    color: var(--text-color);
     font-style: italic;
     margin-top: 0.5rem;
     padding-left: 1rem;
@@ -187,7 +187,7 @@ body {
     }
 }
 
-/* Add these new styles while keeping existing ones */
+
 .nav-button {
     width: 36px;
     height: 36px;
@@ -233,15 +233,22 @@ body {
     opacity: 0.8;
 }
 
-/* Fix for part-of-speech and other titles to retain their color */
+
 .part-of-speech {
-    color: var(--text-color) !important;  /* Changed from #666 to black */
+    color: var(--primary-color); 
 }
 
 .card-title {
-    color: var(--text-color) !important;
+    color: var(--primary-color);  
 }
 
 .word {
-    color: var(--text-color) !important;
+    color: var(--primary-color); 
+}
+
+
+body.clickable-mode-active .part-of-speech,
+body.clickable-mode-active .card-title,
+body.clickable-mode-active .word {
+    color: var(--text-color) !important;  
 }
