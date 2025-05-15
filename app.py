@@ -30,10 +30,6 @@ def get_word_info(word):
         # Get definition
         dict_response = requests.get(f"{DICTIONARY_API_URL}{word}")
         dict_data = dict_response.json() if dict_response.status_code == 200 else None
-        
-        # If the word is not found in the dictionary, log it
-        if dict_response.status_code != 200:
-            logging.debug(f"Word '{word}' not found in dictionary")
 
         # Get images
         image_response = requests.get(
@@ -53,7 +49,7 @@ def get_word_info(word):
 
         result = {
             "definition": dict_data[0] if dict_data else None,
-            "images": [img["urls"]["regular"] for img in image_data["results"][:10]] if image_data and "results" in image_data and image_data["results"] else []  # Ensure we only use first 10 images
+            "images": [img["urls"]["regular"] for img in image_data["results"][:10]] if image_data and "results" in image_data else []  # Ensure we only use first 10 images
         }
 
         # Cache the result
