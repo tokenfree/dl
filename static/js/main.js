@@ -102,6 +102,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             definitionContent.innerHTML = html;
+        } else {
+            // Show "no definition" message when the word is not found in dictionary
+            definitionContent.innerHTML = `
+                <div class="alert alert-warning">
+                    No definition found for this word
+                </div>
+            `;
         }
 
         // Update images
@@ -125,7 +132,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showError(message) {
         definitionContent.innerHTML = `<div class="alert alert-danger">${message}</div>`;
-        carouselInner.innerHTML = '';
+        // Clear carousel and show "no images" message instead of leaving it empty
+        carouselInner.innerHTML = `
+            <div class="carousel-item active">
+                <div class="d-flex align-items-center justify-content-center" style="height: 300px; background: rgba(118, 118, 128, 0.08);">
+                    <p class="text-muted">There is no related images for this word</p>
+                </div>
+            </div>
+        `;
         wordTitle.textContent = 'Word Explorer';
     }
 
