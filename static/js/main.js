@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
 
             def.meanings.forEach(meaning => {
+                // Don't make part-of-speech titles clickable
                 html += `
                     <div class="part-of-speech">${meaning.partOfSpeech}</div>
                 `;
