@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
 
             def.meanings.forEach(meaning => {
-                // Don't make part-of-speech titles clickable
                 html += `
                     <div class="part-of-speech">${meaning.partOfSpeech}</div>
                 `;
@@ -103,13 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             definitionContent.innerHTML = html;
-        } else {
-            // Show "no definition" message when the word is not found in dictionary
-            definitionContent.innerHTML = `
-                <div style="padding: 10px; background-color: white; border: none;">
-                    No definition found for this word
-                </div>
-            `;
         }
 
         // Update images
@@ -119,28 +111,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${img}" alt="${word}" class="d-block w-100">
                 </div>
             `).join('');
-        } else {
-            // Show "no images" message when no images are found
-            carouselInner.innerHTML = `
-                <div class="carousel-item active">
-                    <div class="d-flex align-items-center justify-content-center" style="height: 300px; background: rgba(118, 118, 128, 0.08);">
-                        <p class="text-muted">There is no related images for this word</p>
-                    </div>
-                </div>
-            `;
         }
     }
 
     function showError(message) {
         definitionContent.innerHTML = `<div class="alert alert-danger">${message}</div>`;
-        // Clear carousel and show "no images" message instead of leaving it empty
-        carouselInner.innerHTML = `
-            <div class="carousel-item active">
-                <div class="d-flex align-items-center justify-content-center" style="height: 300px; background: rgba(118, 118, 128, 0.08);">
-                    <p class="text-muted">There is no related images for this word</p>
-                </div>
-            </div>
-        `;
+        carouselInner.innerHTML = '';
         wordTitle.textContent = 'Word Explorer';
     }
 
@@ -176,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
     clickableToggle.addEventListener('click', function() {
         isClickableMode = !isClickableMode;
         this.classList.toggle('active');
-        document.body.classList.toggle('clickable-mode-active', isClickableMode);
+        document.documentElement.classList.toggle('clickable-active', isClickableMode);
         if (searchInput.value.trim()) {
             fetchWordInfo(searchInput.value.trim(), false);
         }
